@@ -38,14 +38,14 @@ battery 0 {
 
         last_full_capacity = true
         integer_battery_capacity = true
-        # hide_seconds = true
+        hide_seconds = true
 
         low_threshold = 25
         threshold_type = percentage
 
-        # status_chr = '⚡'
-        # status_bat = ''
-        # status_full = 'F'
+        status_chr = '⚡'
+        status_bat = '☠'
+        status_full = ''
 }
 
 tztime local {
@@ -63,6 +63,6 @@ cpu_usage {
 disk "/" {
         format = "%free/%total"
         prefix_type = decimal
-        # threshold_type = gbytes_free
-        # low_threshold = 10
+        threshold_type = gbytes_free
+        low_threshold = 3
 }
