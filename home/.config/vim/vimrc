@@ -232,6 +232,9 @@ let g:gundo_right = 1
 " a little wider for wider screens
 let g:gundo_width = 60
 
+" --- Tags
+nmap <F8> :TagbarToggle<CR>
+
 " --- Eyecandy ---------------------------------------------------------------
 " --- Color and color scheme
 set t_Co=256                  " Enable 256 colors
