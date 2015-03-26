@@ -1,0 +1,68 @@
+# i3status configuration file.
+# see "man i3status" for documentation.
+
+# It is important that this file is edited as UTF-8.
+# The following line should contain a sharp s:
+# ß
+# If the above line is not correctly displayed, fix your editor first!
+
+general {
+        colors = true
+        color_good = '#688060'
+        color_degraded = '#dcdccc'
+        color_bad = '#d68686'
+        interval = 1
+}
+
+order += "disk /"
+order += "cpu_usage"
+order += "cpu_temperature 0"
+order += "wireless wlan0"
+order += "ethernet eth0"
+order += "battery 0"
+order += "tztime local"
+
+wireless wlan0 {
+        format_up = "%ip"
+        format_down = ""
+}
+
+ethernet eth0 {
+        # if you use %speed, i3status requires root privileges
+        format_up = "%ip"
+        format_down = ""
+}
+
+battery 0 {
+        format = "%status %percentage %remaining"
+
+        last_full_capacity = true
+        integer_battery_capacity = true
+        # hide_seconds = true
+
+        low_threshold = 25
+        threshold_type = percentage
+
+        # status_chr = '⚡'
+        # status_bat = ''
+        # status_full = 'F'
+}
+
+tztime local {
+        format = "%d.%m.%Y // %H:%M:%S"
+}
+
+cpu_temperature 0 {
+        format = "%degrees °C"
+}
+
+cpu_usage {
+        format = "%usage"
+}
+
+disk "/" {
+        format = "%free/%total"
+        prefix_type = decimal
+        # threshold_type = gbytes_free
+        # low_threshold = 10
+}
