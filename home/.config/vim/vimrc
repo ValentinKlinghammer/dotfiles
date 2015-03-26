@@ -223,7 +223,7 @@ function! LoadBundles()
 
   " --- Themes
   " Bundle 'altercation/solarized'
-  Bundle 'dsolstad/vim-wombat256i'
+  " Bundle 'dsolstad/vim-wombat256i'
   Bundle 'jnurmine/Zenburn'
   " Bundle 'ajh17/Spacegray.vim'
 
