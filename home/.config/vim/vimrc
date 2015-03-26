@@ -19,28 +19,15 @@ set viminfo+=n$XDG_CACHE_HOME/vim/viminfo
 set runtimepath=$XDG_CONFIG_HOME/vim,$XDG_CONFIG_HOME/vim/after,$VIM,$VIMRUNTIME
 let $MYVIMRC="$XDG_CONFIG_HOME/vim/vimrc"
 
-" --- Key mapping ----------------------------------------------------------
-" Remap leader to the easier reachable ,
-let mapleader=","
-
-" Paste from system clipboard
-nmap <Leader>p "+p
-" TODO Yank to system clipboard?
-
-" Clear search highlighting
-nmap <Leader>q :nohlsearch<CR>
-
-" Switch buffer more easily
-nmap <C-e> :b#<CR>
-nmap <C-l> :bnext<CR>
-nmap <C-h> :bprev<CR>
-
 " --- Options  ---------------------------------------------------------------
 " --- System
 set lazyredraw  " Don't redraw when don't have to
 set ttyfast     " Using a terminal emulator
 set autoread    " Reload file in VIM if changed outside and not changed in VIM
 set visualbell  " No sounds
+
+"set timeoutlen=0       " Time to wait after ESC (default causes an annoying delay)
+"set clipboard+=unnamed " Yanks go on clipboard instead.
 
 " --- Tab and whitespace options
 set autoindent                    " Use indent from previous line
@@ -158,6 +145,92 @@ syntax on
 filetype plugin indent on               " required!
 
 " --- Plugin key mappings ----------------------------------------------------
+" --- CtrlP
+let g:ctrlp_map = '<c-p>'
+let g:ctrlp_cmd = 'CtrlP'
+let g:ctrlp_custom_ignore = {
+    \ 'dir': '\v[\/](\.git|\.hg|\.svn|node_modules|CVS|tmp|Library|Applications|dist|build|docs|Music|[^\/]*-store)$',
+    \ 'file': '\v\.(exe|so|dll)$',
+    \
+    \ }
+let g:ctrlp_user_command = {
+    \ 'types' : {
+    \ 1: ['.git', 'cd %s && git ls-files . --cached --exclude-standard --others'],
+    \ 2: ['.hg', 'hg --cwd %s locate -I .'],
+    \
+    \ }
+    \ }
+
+let g:ctrlp_by_filename = 1
+" If CtrlP installed, map that
+if exists(':CtrlPBuffer')
+  nmap ; :CtrlPBuffer<CR>
+endif
+
+" --- Nerd tree
+" Toggle nerd tree
+map <F2> :NERDTreeToggle<CR>
+
+" --- Lightline
+let g:lightline = {
+    \ 'colorscheme': 'wombat',
+    \ 'active': {
+    \   'left': [ [ 'mode', 'paste' ],
+    \             [ 'fugitive', 'readonly', 'filename', 'modified' ] ]
+    \ },
+    \ 'component_function': {
+    \   'fugitive': 'MyFugitive',
+    \   'readonly': 'MyReadonly',
+    \   'filename': 'MyFilename',
+    \ },
+    \ 'separator': { 'left': '⮀', 'right': '⮂' },
+    \ 'subseparator': { 'left': '⮁', 'right': '⮃' }
+    \ }
+
+function! MyReadonly()
+  if &filetype == "help"
+    return ""
+  elseif &readonly
+    return "⭤ "
+  else
+    return ""
+  endif
+endfunction
+
+function! MyFugitive()
+  if exists("*fugitive#head")
+    let _ = fugitive#head()
+    return strlen(_) ? '⭠ '._ : ''
+  endif
+  return ''
+endfunction
+
+function! MyFilename()
+  return ('' != MyReadonly() ? MyReadonly() . ' ' : '') .
+       \ ('' != expand('%') ? expand('%') : '[NoName]')
+endfunction
+
+set noshowmode
+
+" --- UltiSnips
+" Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
+let g:UltiSnipsExpandTrigger='<tab>'
+let g:UltiSnipsJumpForwardTrigger='<tab>'
+let g:UltiSnipsJumpBackwardTrigger='<s-tab>'
+" If you want :UltiSnipsEdit to split your window.
+let g:UltiSnipsEditSplit='vertical'
+
+"--- Split thingy
+" TODO Leader does not work here but using "," directly does, why?
+nmap ,j :SplitjoinJoin<cr>
+nmap ,s :SplitjoinSplit<cr>
+
+" --- Undo tree
+nmap <Leader>u :GundoToggle<CR>
+" open on the right so as not to compete with the nerdtree
+let g:gundo_right = 1
+" a little wider for wider screens
+let g:gundo_width = 60
 
 " --- Eyecandy ---------------------------------------------------------------
 " --- Color and color scheme
@@ -200,6 +273,22 @@ if has("autocmd")
   autocmd FileType ruby,eruby let g:rubycomplete_rails = 1
   autocmd FileType ruby,eruby let g:rubycomplete_classes_in_global=1
 endif
+
+" --- Key mapping ----------------------------------------------------------
+" Remap leader to the easier reachable ,
+let mapleader=","
+
+" Paste from system clipboard
+nmap <Leader>p "+p
+nmap <Leader>y "+y
+
+" Clear search highlighting
+nmap <Leader>q :nohlsearch<CR>
+
+" Switch buffer more easily
+nmap <C-e> :b#<CR>
+nmap <C-l> :bnext<CR>
+nmap <C-h> :bprev<CR>
 
 " --- Finish up --------------------------------------------------------------
 set secure
