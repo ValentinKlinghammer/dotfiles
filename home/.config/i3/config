@@ -148,5 +148,8 @@ exec --no-startup-id dropbox start
 # Wallpaper
 exec feh --bg-fill /home/vk/wallpaper.jpg
 
+# Redshift
+exec --no-startup-id redshift
+
 # Compton as compositor in background with shadows enabled
 exec --no-startup-id compton -b
