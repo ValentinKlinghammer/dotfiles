@@ -23,6 +23,10 @@ if [ -d "$HOME/bin" ] ; then
 fi
 
 alias ccat="$HOME/bin/ccat.sh"
+alias grep="grep --color=always"
+alias cp="cp -ia"
+alias mv="mv -i"
+alias rm="rm -i"
 
 # Add RVM to PATH for scripting
 PATH=$PATH:$HOME/.rvm/bin
