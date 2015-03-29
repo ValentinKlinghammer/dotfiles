@@ -1,0 +1,17 @@
+[user]
+  name = Valentin Klinghammer
+  email = valentin@quelltextfabrik.de
+
+[core]
+  editor = vim
+
+[color]
+  ui = true
+
+[alias]
+  co = checkout
+  br = branch
+  ci = commit
+  st = status
+  yesterday = !git log --graph --all --since=\"yesterday.midnight\" --until=\"midnight\" --author=\"$(git config user.name)\" --oneline
+  today = !git log --since=midnight --author=\"$(git config user.name)\" --oneline
