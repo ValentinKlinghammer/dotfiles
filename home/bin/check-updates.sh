@@ -10,5 +10,5 @@ if [[ $updates > 0 ]] ; then
         MESSAGE="$MESSAGE\n$security_updates are security updates"
     fi
 
-    DISPLAY=:0.0 /usr/bin/notify-send 'Updates Available' "$MESSAGE"
+    DISPLAY=:0.0 /usr/bin/notify-send 'Updates Available' "$MESSAGE" -t 0
 fi

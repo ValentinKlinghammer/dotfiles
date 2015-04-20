@@ -283,7 +283,7 @@ let mapleader=","
 
 " Paste from system clipboard
 nmap <Leader>p "+p
-nmap <Leader>y "+y
+nmap <Leader>y "+yy
 
 " Clear search highlighting
 nmap <Leader>q :nohlsearch<CR>

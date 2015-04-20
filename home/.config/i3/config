@@ -94,7 +94,7 @@ bindsym $mod+r mode "resize"
 bindsym Mod4+c kill
 
 # Lock screen
-bindsym Mod4+l exec i3lock -i /home/vk/.config/i3/i3lock_back.png -n -t
+bindsym Mod4+l exec /home/vk/bin/lock.sh
 
 # Standby
 # TODO lidclose = always suspend hybrid and lock
