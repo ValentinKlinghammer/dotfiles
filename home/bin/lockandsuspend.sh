@@ -5,11 +5,14 @@ export XAUTHORITY="$userhome/.Xauthority"
 export DISPLAY=":0"
 
 lock() {
-  su vk -c "i3lock -i $userhome/.config/i3/i3lock_back.png  -t"
+  sh -c "$userhome/bin/lock.sh"
 }
 
 grep -q closed /proc/acpi/button/lid/LID/state
 if [ $? = 0 ]
+  lock
+  sudo pm-suspend-hybrid
 then
-  lock && sudo pm-suspend-hybrid
+  lock
+  sudo pm-suspend-hybrid
 fi

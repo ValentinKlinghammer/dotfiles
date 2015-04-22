@@ -28,6 +28,12 @@ alias cp="cp -ia"
 alias mv="mv -i"
 alias rm="rm -i"
 
+# For using notify-send within cronjobs
+touch $HOME/.cache/Xdbus
+chmod 600 $HOME/.cache/Xdbus
+env | grep DBUS_SESSION_BUS_ADDRESS > $HOME/.cache/Xdbus
+echo 'export DBUS_SESSION_BUS_ADDRESS' >> $HOME/.cache/Xdbus
+
 # Add RVM to PATH for scripting
 PATH=$PATH:$HOME/.rvm/bin
 

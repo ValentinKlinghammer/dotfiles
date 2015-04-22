@@ -7,7 +7,7 @@ scrot $TMPBG
 # Pixelate effect by scaling down and up again
 convert $TMPBG -scale 10% -scale 1000% $TMPBG
 # Slight black overlay
-convert $TMPBG -fill black -colorize 25% $TMPBG
+convert $TMPBG -fill black -colorize 50% $TMPBG
 # Add lock icon to center of screen
 [[ -f $ICON ]] && convert $TMPBG $ICON -gravity center -composite -matte $TMPBG
 

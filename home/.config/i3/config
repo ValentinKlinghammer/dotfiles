@@ -13,7 +13,7 @@ bindsym $mod+Return exec i3-sensible-terminal
 bindsym $mod+Shift+q kill
 
 # Start dmenu2, an even shinier version of dmenu, from https://bitbucket.org/melek/dmenu2/src
-bindsym $mod+d exec dmenu_run -x 760 -y 490 -w 480 -q -z -dim 0.6 -dc '#111' -l 10 -nb '#3f3f3f' -nf '#dcdccc' -sb '#e3ceab' -sf '#3f3f3f' -fn 'pango:Ubuntu Mono'
+bindsym $mod+d exec dmenu_run -x 720 -y 490 -w 480 -q -z -dim 0.6 -dc '#111' -l 10 -nb '#3f3f3f' -nf '#dcdccc' -sb '#e3ceab' -sf '#3f3f3f' -fn 'pango:Ubuntu Mono'
 
 # Change focus, use VIM bindings
 bindsym $mod+h focus left
