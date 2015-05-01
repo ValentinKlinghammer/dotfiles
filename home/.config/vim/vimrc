@@ -214,11 +214,22 @@ set noshowmode
 
 " --- UltiSnips
 " Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
-let g:UltiSnipsExpandTrigger='<tab>'
-let g:UltiSnipsJumpForwardTrigger='<tab>'
-let g:UltiSnipsJumpBackwardTrigger='<s-tab>'
+" let g:UltiSnipsExpandTrigger='<tab>'
+" let g:UltiSnipsJumpForwardTrigger='<tab>'
+" let g:UltiSnipsJumpBackwardTrigger='<s-tab>'
+
 " If you want :UltiSnipsEdit to split your window.
 let g:UltiSnipsEditSplit='vertical'
+
+"" YouCompleteMe
+let g:ycm_key_list_previous_completion=['<Up>']
+
+"" Ultisnips
+let g:UltiSnipsExpandTrigger="<c-j>"
+let g:UltiSnipsListSnippets="<c-s-tab>"
+
+let g:UltiSnipsSnippetsDir = expand("$XDG_CONFIG_HOME/vim/bundle/ultisnips")
+let g:UltiSnipsSnippetDirectories = ["UltiSnips", "ultisnips"]
 
 "--- Split thingy
 " TODO Leader does not work here but using "," directly does, why?
